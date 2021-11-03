@@ -1,0 +1,30 @@
+
+.bottonStart{
+    position:absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bottonStart #start{
+    position:absolute;
+    top: 43%;
+    width: 340px;
+}
+
+.bottonRestart{
+    position:fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bottonRestart #restart{
+    position:absolute;
+    width: 350px;
+    left: 37%;
+    top: 40%
+
+}
