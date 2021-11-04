@@ -38,7 +38,7 @@ jump = false
 
 function move (){
 if(jump && snailY >= 420){
-   snailY = snailY -13
+   snailY = snailY -16
 }
 if(jump == false && snailY <= 690){
     snailY = snailY +13
@@ -98,9 +98,9 @@ function draw(){
         ctx.drawImage(tank, tanks[i].x, tanks[i].y, tankW, tankH)
         tanks[i].x = tanks[i].x - speed
     if(tanks[i].x + tankW < 0 ) {
-            tanks[i].x = 2800
+            tanks[i].x = 2900
         }
-        if (tanks[i].x <= snailX && tanks[i].x >=snailX - 8) {
+        if (tanks[i].x <= snailX && tanks[i].x >=snailX - speed) {
             score++
         }
     if(snailX - 20 + snaileW - 20 >= tanks[i].x + 50 && snailX <= tanks[i].x + 50 + tankW -50 && (snailY - 15 <= tanks[i].y + 50 + tankH -50 && snailY -15+snaileH >= tanks[i].y + 50)){
@@ -109,11 +109,11 @@ function draw(){
     }
     for(let i = 0; i< guards.length; i++){
         ctx.drawImage(guard, guards[i].x, guards[i].y, guardW, guardH)
-        guards[i].x = guards[i].x - speed 
+        guards[i].x = guards[i].x - speed -0.3
     if(guards[i].x + guardW < 0 ){
         guards[i].x = 1400
        }
-        if (snailY == guards[i].x + guardW) {
+        if (guards[i].x <= snailX && guards[i].x >=snailX - speed) {
             score++
         }
     if(snailX -20 + snaileW - 20 >= guards[i].x - 30  && snailX <= guards[i].x - 30 + guardW -50 && (snailY -50 <= guards[i].y -50 + guardH -50 && snailY - 35 +snaileH >= guards[i].y -50)){
@@ -132,8 +132,13 @@ if(score > 15) {
 if(score > 23) {
     speed = 25
 }
+if(score > 30) {
+    speed = 30
+}
+if(score > 34) {
+    speed = 34
+}
 
-    
     if (isGameOver) {
         gameOver()
         butBackR.style.display = 'block'
@@ -141,10 +146,15 @@ if(score > 23) {
     else {
         intervalId = requestAnimationFrame(draw)
     }
-
     ctx.font = '64px Verdana'
     ctx.fillText(`Score: ${score}`, 30, 90 )
 }
+
+// if(score >= 30){
+//     return =
+// }else{
+//     return =
+// }
 document.addEventListener('keydown', (event) => {
 if(event.key == ' '){
 jump = true
@@ -167,3 +177,8 @@ window.addEventListener('load', () => {
         draw()
     })
     })
+
+
+    // $ git add .
+    // $ git commit -m "Solved lab"
+    // $ git push origin master
